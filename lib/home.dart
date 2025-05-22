@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:part_minder/structures/part.dart';
+import 'package:part_minder/widgets/part_custom_list_item.dart';
+import 'package:part_minder/structures/part_icons.dart';
 
 class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
+  SecondPage({super.key});
+
+  final List<Part> items = [
+    Part(id: 0,
+        name: 'Масло',
+        article: 7444159,
+        isChanged: false,
+        resource: 10000,
+        image: PartIcons.engine.source)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +25,8 @@ class SecondPage extends StatelessWidget {
             children: [
               Expanded( // Занимает всё доступное пространство
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 150), // Отступы слева и справа
+                  padding: EdgeInsets.symmetric(horizontal: 150),
+                  // Отступы слева и справа
                   child: TextField(
                     style: TextStyle(fontSize: 24),
                     maxLength: 6,
@@ -29,11 +42,11 @@ class SecondPage extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: ListView(
-              children: [
-                ListTile(title: Text('Элемент 1')),
-                ListTile(title: Text('Элемент 2')),
-              ],
+            child: ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  return PartCustomListItem(item: items[index]);
+                }
             ),
           ),
         ],

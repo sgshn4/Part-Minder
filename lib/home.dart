@@ -12,13 +12,18 @@ class SecondPage extends StatelessWidget {
         article: 7444159,
         isChanged: false,
         resource: 10000,
-        image: PartIcons.engine.source)
+        image: PartIcons.liquid.source),
+    Part(id: 1,
+        name: 'Батарейка',
+        article: 7444159,
+        isChanged: false,
+        resource: 10000,
+        image: PartIcons.battery.source),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Второе окно')),
       body: Column(
         children: [
           Row(

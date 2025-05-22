@@ -13,30 +13,31 @@ class PartCustomListItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.name,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    padding: const EdgeInsets.only(left: 32),
+                    child:
+                    Text(
+                      item.name,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
+                  )
+
                 ],
               ),
             ),
             Container(
-              width: 80,
-              height: 80,
-              child: Image.asset(item.image),
+              padding: const EdgeInsets.only(right: 32),
+              child: Image.asset(item.image, width: 60, height: 60),
             ),
-            const SizedBox(width: 12),
-            // Правая часть (текстовая информация)
           ],
         ),
       ),

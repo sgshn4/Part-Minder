@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:part_minder/pages/welcome.dart';
+import 'pages/home.dart';
 import 'dart:async';
+import 'package:part_minder/utils/shared_preferences_utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,12 +58,23 @@ class _MyHomePageState extends State<MyHomePage> {
   void startTimer() {
     const oneSec = Duration(seconds: 1);
     _timer = Timer.periodic(oneSec, (Timer timer) {
+
       if (_start == 0) {
         timer.cancel();
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => SecondPage()),
-        );
+        SharedPreferencesUtils sharedPreferencesUtils = SharedPreferencesUtils();
+        bool isWelcome = sharedPreferencesUtils.readBool('welcome') as bool;
+        if (isWelcome) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
+        } else {
+          sharedPreferencesUtils.writeBool('welcome', true);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => WelcomePage()),
+          );
+        }
       } else {
         setState(() {
           _start--;

@@ -3,8 +3,8 @@ import 'package:part_minder/structures/part.dart';
 import 'package:part_minder/widgets/part_custom_list_item.dart';
 import 'package:part_minder/structures/part_icons.dart';
 
-class SecondPage extends StatelessWidget {
-  SecondPage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
 
   final List<Part> items = [
     Part(id: 0,
@@ -28,10 +28,9 @@ class SecondPage extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded( // Занимает всё доступное пространство
+              Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 150),
-                  // Отступы слева и справа
+                  padding: EdgeInsets.only(top: 100, left: 150, right: 150),
                   child: TextField(
                     style: TextStyle(fontSize: 24),
                     maxLength: 6,
